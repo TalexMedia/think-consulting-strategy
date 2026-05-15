@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Think Consulting · A Custom Strategy · Talex Media</title>
+<link rel="icon" type="image/png" sizes="192x192" href="https://static.wixstatic.com/media/3c6878_9a68ae0b3ff84e198fdd43fac493e294~mv2_d_1500_1500_s_2.png/v1/fill/w_192,h_192,lg_1,usm_0.66_1.00_0.01/3c6878_9a68ae0b3ff84e198fdd43fac493e294~mv2_d_1500_1500_s_2.png"/>
+<link rel="shortcut icon" href="https://static.wixstatic.com/media/3c6878_9a68ae0b3ff84e198fdd43fac493e294~mv2_d_1500_1500_s_2.png/v1/fill/w_32,h_32,lg_1,usm_0.66_1.00_0.01/3c6878_9a68ae0b3ff84e198fdd43fac493e294~mv2_d_1500_1500_s_2.png" type="image/png"/>
+<link rel="apple-touch-icon" href="https://static.wixstatic.com/media/3c6878_9a68ae0b3ff84e198fdd43fac493e294~mv2_d_1500_1500_s_2.png/v1/fill/w_180,h_180,lg_1,usm_0.66_1.00_0.01/3c6878_9a68ae0b3ff84e198fdd43fac493e294~mv2_d_1500_1500_s_2.png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@300;400;500;600&family=EB+Garamond:ital,wght@0,400;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --o:#E85A0C;
+  --o-dim:rgba(232,90,12,0.08);
+  --o-mid:rgba(232,90,12,0.18);
+  --o-border:rgba(232,90,12,0.28);
+  --bg:#F5F2EC;
+  --surface:#FFFFFF;
+  --surface2:#FAF8F5;
+  --border:#E2DDD6;
+  --border-strong:#C8C2BA;
+  --txt:#1A1816;
+  --txt2:#6B625A;
+  --txt3:#A89E96;
+  --green:#2D8C52;
+  --green-bg:#EDF7F2;
+  --green-border:#A8D9BC;
+  --red:#C0392B;
+  --red-bg:#FDF0EE;
+  --red-border:#E8BEBC;
+  --amber:#B07D10;
+  --amber-bg:#FDF7EC;
+  --amber-border:#E0C880;
+}
+
+html{background:var(--bg);color:var(--txt);font-family:'DM Sans',system-ui,sans-serif;font-size:15px;line-height:1.6}
+body{background:var(--bg);min-height:100vh}
+#wrap{max-width:700px;margin:0 auto;padding:0 1.25rem 5rem}
+
+.disp{font-family:'Bebas Neue',sans-serif;letter-spacing:0.04em;line-height:1}
+.head{font-family:'Oswald',sans-serif;font-weight:600;letter-spacing:0.02em;line-height:1.1}
+.lbl{font-family:'Oswald',sans-serif;font-weight:500;font-size:11px;letter-spacing:0.14em;text-transform:uppercase}
+.italic{font-family:'EB Garamond',Georgia,serif;font-style:italic}
+
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:1rem 0;border-bottom:1px solid var(--border)}
+.topbar-brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.topbar-logo{height:28px;width:auto}
+.topbar-name{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:0.08em;color:var(--txt)}
+.topbar-right{display:flex;align-items:center;gap:12px}
+.topbar-cta{background:var(--o);color:#fff;font-family:'Oswald',sans-serif;font-weight:600;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;padding:8px 14px;border-radius:6px;text-decoration:none;transition:background 0.15s}
+.topbar-cta:hover{background:#c94d08}
+
+.hero{padding:3rem 0 2.5rem;border-bottom:2px solid var(--o)}
+.hero-step{display:flex;align-items:center;gap:10px;margin-bottom:1.25rem;flex-wrap:wrap}
+.step-pill{background:var(--o);color:#fff;font-family:'Oswald',sans-serif;font-weight:600;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;padding:3px 10px;border-radius:3px}
+.hero-eyebrow{font-family:'Oswald',sans-serif;font-size:12px;font-weight:400;letter-spacing:0.1em;text-transform:uppercase;color:var(--txt2)}
+.hero-title{font-size:clamp(40px,8vw,66px);color:var(--txt);margin-bottom:0.5rem}
+.hero-tagline{font-size:clamp(19px,3.5vw,26px);color:var(--o);margin-bottom:1rem}
+
+.stat-strip{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--border);border-radius:8px;background:var(--surface);overflow:hidden;margin:2rem 0}
+.stat-cell{padding:1rem;text-align:center;border-right:1px solid var(--border)}
+.stat-cell:last-child{border-right:none}
+.stat-num{font-family:'Bebas Neue',sans-serif;font-size:34px;letter-spacing:0.04em;color:var(--o)}
+.stat-label{font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--txt3);font-family:'Oswald',sans-serif;font-weight:400}
+
+.source-link{font-size:11px;color:var(--txt3);text-decoration:none;border-bottom:1px dotted var(--border-strong);transition:color 0.15s,border-color 0.15s;white-space:nowrap;margin-left:4px;font-family:'Oswald',sans-serif;letter-spacing:0.04em;position:relative;z-index:2}
+.source-link:hover{color:var(--o);border-bottom-color:var(--o)}
+.source-link::before{content:"↗ "}
+
+.callout{border-left:3px solid var(--o);padding:1rem 1.25rem;background:var(--surface);border-radius:0 8px 8px 0;margin:1.75rem 0}
+.callout p{font-family:'EB Garamond',Georgia,serif;font-style:italic;font-size:16px;color:var(--txt);line-height:1.75}
+.callout-attr{margin-top:0.6rem;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--o);font-family:'Oswald',sans-serif;font-weight:500}
+.callout-attr a{color:inherit;border-bottom:1px dotted var(--border-strong);text-decoration:none;transition:color 0.15s,border-color 0.15s}
+.callout-attr a:hover{color:var(--o);border-bottom-color:var(--o)}
+
+.section-intro{margin-bottom:1.25rem}
+.section-intro-row{display:flex;align-items:center;gap:8px;margin-bottom:0.4rem}
+.sec-pill-dark{background:var(--txt);color:#fff;font-family:'Oswald',sans-serif;font-weight:600;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;padding:3px 10px;border-radius:3px}
+.sec-pill-orange{background:var(--o);color:#fff;font-family:'Oswald',sans-serif;font-weight:600;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;padding:3px 10px;border-radius:3px}
+.section-eyebrow{font-family:'Oswald',sans-serif;font-size:11px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--txt3)}
+.section-title{font-family:'Oswald',sans-serif;font-weight:600;letter-spacing:0.02em;line-height:1.1;font-size:22px;color:var(--txt);margin-bottom:0.25rem}
+.section-subtitle{font-size:13px;color:var(--txt3);font-style:italic;font-family:'EB Garamond',Georgia,serif}
+
+.section-block{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.5rem;margin-bottom:1rem}
+.section-block p{font-size:14px;color:var(--txt2);line-height:1.8;margin-bottom:0.9rem}
+.section-block p:last-child{margin-bottom:0}
+.section-block strong{color:var(--txt);font-weight:500}
+.section-block em{font-family:'EB Garamond',Georgia,serif;font-style:italic;color:var(--txt)}
+.section-block a{color:var(--txt2);text-decoration:none;border-bottom:1px dotted var(--border-strong);transition:color 0.15s,border-color 0.15s}
+.section-block a:hover{color:var(--o);border-bottom-color:var(--o)}
+
+.rule{height:1px;background:var(--border);border:none;margin:1.5rem 0}
+.rule-orange{height:2px;background:var(--o);border:none;margin:2.5rem 0}
+
+.ideas-grid{display:flex;flex-direction:column;gap:0.75rem;margin-top:1rem}
+.idea-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.1rem 1.3rem;display:flex;gap:1.1rem;align-items:flex-start}
+.idea-card-featured{background:rgba(232,90,12,0.05);border-color:var(--o)}
+.idea-num{flex-shrink:0;width:36px;height:36px;background:var(--o);color:#fff;font-family:'Bebas Neue',sans-serif;font-size:18px;display:flex;align-items:center;justify-content:center;border-radius:6px;margin-top:2px;letter-spacing:0.04em}
+.idea-body{flex:1;min-width:0}
+.idea-title{font-family:'Oswald',sans-serif;font-weight:600;font-size:15px;color:var(--txt);letter-spacing:0.02em;margin-bottom:6px;line-height:1.35}
+.idea-desc{font-size:13.5px;color:var(--txt2);line-height:1.7}
+.idea-desc em{font-family:'EB Garamond',Georgia,serif;font-style:italic;color:var(--txt)}
+.idea-tag{margin-top:10px;font-family:'Oswald',sans-serif;font-size:10px;letter-spacing:0.12em;color:var(--o);text-transform:uppercase;font-weight:600}
+.idea-tag a{color:inherit;text-decoration:none;border-bottom:1px dotted var(--o)}
+.idea-tag a:hover{border-bottom-style:solid}
+
+.reel-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:0.5rem}
+@media(max-width:560px){.reel-grid{grid-template-columns:1fr}}
+.reel-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:0.95rem 1.05rem;display:flex;flex-direction:column}
+.reel-eyebrow{font-family:'Oswald',sans-serif;font-size:9.5px;letter-spacing:0.16em;color:var(--o);text-transform:uppercase;font-weight:600;margin-bottom:0.4rem}
+.reel-title{font-family:'Oswald',sans-serif;font-weight:600;font-size:13.5px;color:var(--txt);letter-spacing:0.03em;margin-bottom:0.45rem;line-height:1.3}
+.reel-body{font-size:12.5px;color:var(--txt2);line-height:1.6;flex:1;margin-bottom:0.5rem}
+.reel-body em{font-family:'EB Garamond',Georgia,serif;font-style:italic;color:var(--txt)}
+.reel-body a{color:inherit;text-decoration:none;border-bottom:1px dotted var(--border-strong);transition:color 0.15s,border-color 0.15s}
+.reel-body a:hover{color:var(--o);border-bottom-color:var(--o)}
+
+.whats-inside{margin:0.5rem 0 1rem}
+.wi-heading{font-family:'Oswald',sans-serif;font-weight:600;font-size:18px;color:var(--txt);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:1rem;text-align:center}
+.whats-inside-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+@media(max-width:560px){.whats-inside-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:380px){.whats-inside-grid{grid-template-columns:1fr}}
+.wi-card{display:block;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:0.95rem 1rem;text-decoration:none;color:inherit;transition:border-color 0.15s,background 0.15s}
+.wi-card:hover{border-color:var(--o);background:#FCFAF7}
+.wi-num{font-family:'Bebas Neue',sans-serif;font-size:30px;color:var(--o);line-height:1;letter-spacing:0.04em;margin-bottom:8px}
+.wi-title{font-family:'Oswald',sans-serif;font-weight:600;font-size:13px;color:var(--txt);letter-spacing:0.04em;margin-bottom:5px;line-height:1.3;text-transform:uppercase}
+.wi-desc{font-size:12.5px;color:var(--txt2);line-height:1.55}
+
+.case-card{background:var(--txt);border-radius:12px;padding:1.5rem 1.5rem 1.75rem;margin-bottom:1rem;color:#fff;overflow:hidden}
+.cs-label{font-family:'Oswald',sans-serif;font-weight:500;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--o);margin-bottom:0.5rem}
+.cs-name{font-family:'Bebas Neue',sans-serif;font-size:clamp(32px,5vw,42px);letter-spacing:0.03em;line-height:1;color:#fff;margin-bottom:1.1rem}
+.cs-stat-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:1.25rem}
+.cs-stat-cell{background:rgba(255,255,255,0.04);border-top:2px solid var(--o);padding:0.75rem 0.6rem 0.65rem}
+.cs-stat-num{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:0.03em;color:var(--o);line-height:1.05}
+.cs-stat-label{font-size:10px;color:rgba(255,255,255,0.55);line-height:1.35;margin-top:2px}
+.cs-section{border-left:3px solid var(--o);padding:0.5rem 0 0.5rem 0.85rem;margin-bottom:0.9rem}
+.cs-section:last-child{margin-bottom:0}
+.cs-section-label{font-family:'Oswald',sans-serif;font-weight:600;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--o);margin-bottom:0.35rem}
+.cs-section-body{font-size:13px;color:rgba(255,255,255,0.78);line-height:1.7}
+.cs-footer-meta{margin-top:1.1rem;padding-top:0.9rem;border-top:1px solid rgba(255,255,255,0.1);font-size:11px;color:rgba(255,255,255,0.45);font-family:'Oswald',sans-serif;letter-spacing:0.06em;text-align:center}
+
+.cred-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:1.25rem}
+.cred-chip{padding:6px 12px;border:1px solid var(--o-border);background:var(--o-dim);border-radius:4px;font-family:'Oswald',sans-serif;font-weight:500;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--o)}
+
+.byline{display:flex;gap:14px;align-items:center;padding:1rem 1.25rem;background:var(--surface);border:1px solid var(--border);border-radius:10px;margin:1.5rem 0}
+.byline-avatar{width:60px;height:60px;border-radius:50%;overflow:hidden;background:var(--o-dim);border:2px solid var(--o);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--o);flex-shrink:0}
+.byline-avatar img{width:100%;height:100%;object-fit:cover;display:block}
+.byline-body{flex:1;min-width:0}
+.byline-name{font-family:'Oswald',sans-serif;font-weight:600;font-size:14px;color:var(--txt);letter-spacing:0.03em}
+.byline-sub{font-size:12px;color:var(--txt2);line-height:1.5;margin-top:2px}
+
+.brand-mark-row{display:flex;align-items:center;gap:14px;margin-bottom:1.25rem;flex-wrap:wrap}
+.brand-logo-wrap{width:56px;height:56px;border-radius:10px;background:var(--surface);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;overflow:hidden;padding:6px;flex-shrink:0}
+.brand-logo-wrap img{max-width:100%;max-height:100%;object-fit:contain}
+.brand-logo-fallback{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:0.04em;color:var(--o);line-height:1}
+
+.channel-grid{display:grid;grid-template-columns:1fr;gap:6px;margin-bottom:1rem}
+.channel-card{position:relative;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:0.7rem 0.95rem;display:flex;gap:12px;align-items:flex-start;transition:border-color 0.15s,background 0.15s}
+.channel-card:hover{border-color:var(--o);background:#FCFAF7}
+.channel-card.channel-gap{border-style:dashed;background:var(--surface2)}
+.channel-link{position:absolute;inset:0;z-index:1;border-radius:8px}
+.channel-link:focus-visible{outline:2px solid var(--o);outline-offset:2px}
+.channel-icon{width:18px;height:18px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:3px}
+.channel-icon svg{width:18px;height:18px;display:block}
+.channel-icon.linkedin svg{fill:#0A66C2}
+.channel-icon.youtube svg{fill:#FF0000}
+.channel-icon.facebook svg{fill:#1877F2}
+.channel-icon.instagram svg{fill:#E4405F}
+.channel-icon.twitter svg{fill:#000}
+.channel-icon.tiktok svg{fill:#000}
+.channel-icon.spotify svg{fill:#1DB954}
+.channel-icon.applepodcasts svg{fill:#832BC1}
+.channel-icon.podcast svg{fill:#832BC1}
+.channel-icon.threads svg{fill:#000}
+.channel-icon.substack svg{fill:#FF6719}
+.channel-icon.blog svg{fill:var(--txt2)}
+.channel-icon.website svg{fill:var(--txt)}
+.channel-icon.books svg{fill:var(--o)}
+.channel-icon.vimeo svg{fill:#1AB7EA}
+.channel-handle a,.channel-snippet a{color:inherit;text-decoration:none;border-bottom:1px dotted var(--border-strong);transition:color 0.15s,border-color 0.15s}
+.channel-handle a:hover,.channel-snippet a:hover{color:var(--o);border-bottom-color:var(--o)}
+.channel-body{flex:1;min-width:0}
+.channel-head{display:flex;align-items:baseline;gap:8px;margin-bottom:2px;flex-wrap:wrap}
+.channel-name{font-family:'Oswald',sans-serif;font-weight:600;font-size:12px;color:var(--txt);letter-spacing:0.06em;text-transform:uppercase}
+.channel-handle{font-size:11px;color:var(--txt3);font-family:'Oswald',sans-serif;letter-spacing:0.04em}
+.channel-snippet{font-size:13px;color:var(--txt2);line-height:1.55}
+.channel-snippet em{font-family:'EB Garamond',Georgia,serif;font-style:italic;color:var(--txt)}
+.channel-snippet ul{list-style:none;padding:0;margin:0 0 6px 0}
+.channel-snippet ul li{position:relative;padding-left:14px;margin-bottom:3px}
+.channel-snippet ul li::before{content:"·";position:absolute;left:4px;top:-2px;color:var(--o);font-weight:700;font-size:16px;line-height:1}
+.channel-snippet ul li:last-child{margin-bottom:0}
+.channel-gap .channel-snippet ul li::before{color:var(--txt3)}
+
+.cta-block{background:var(--txt);border-radius:12px;padding:2.25rem 1.75rem;margin-top:2rem;text-align:center}
+.cta-eyebrow{font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(232,90,12,0.9);font-family:'Oswald',sans-serif;font-weight:500;margin-bottom:0.75rem}
+.cta-headline{font-size:clamp(28px,5vw,44px);color:#fff;margin-bottom:0.6rem}
+.cta-sub{font-size:13.5px;color:rgba(255,255,255,0.65);line-height:1.75;max-width:480px;margin:0 auto 1.75rem}
+.cta-primary{display:inline-block;background:var(--o);color:#fff;padding:14px 30px;border-radius:8px;font-family:'Oswald',sans-serif;font-weight:600;font-size:14px;letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;transition:background 0.15s,transform 0.1s}
+.cta-primary:hover{background:#c94d08}
+.cta-primary:active{transform:scale(0.98)}
+.cta-reply{margin-top:1.5rem;padding-top:1.25rem;border-top:1px solid rgba(255,255,255,0.08);font-size:13px;color:rgba(255,255,255,0.55);font-family:'EB Garamond',Georgia,serif;font-style:italic;line-height:1.6}
+
+.faq-item{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1rem 1.25rem;margin-bottom:8px}
+.faq-q{font-family:'Oswald',sans-serif;font-weight:600;font-size:14px;color:var(--txt);margin-bottom:6px;letter-spacing:0.02em}
+.faq-a{font-size:13px;color:var(--txt2);line-height:1.7}
+
+.site-footer{margin-top:3rem;padding:1.5rem 0 1rem;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.footer-brand{font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:0.08em;color:var(--txt2)}
+.footer-links{display:flex;gap:1.25rem;flex-wrap:wrap}
+.footer-links a{font-size:12px;color:var(--txt3);text-decoration:none;letter-spacing:0.06em;font-family:'Oswald',sans-serif;text-transform:uppercase}
+.footer-links a:hover{color:var(--o)}
+.footer-copy{font-size:11px;color:var(--txt3);width:100%}
+
+@media print{
+  body{background:#fff}
+  .topbar-cta,.cta-primary{display:none}
+}
+</style>
+</head>
+<body>
+<div id="wrap">
+
+  <nav class="topbar">
+    <a class="topbar-brand" href="https://www.talexmedia.com" target="_blank">
+      <img class="topbar-logo"
+        src="https://static.wixstatic.com/media/3c6878_456d81e9cdb84e6c8bb3260ebfcc0523~mv2.png"
+        alt="Talex Media"
+        onerror="this.style.display='none'; this.nextElementSibling.style.display='inline'"
+      />
+      <span class="topbar-name" style="display:none">TALEX MEDIA</span>
+    </a>
+    <div class="topbar-right">
+      <a class="topbar-cta" href="https://calendly.com/d/ct7b-xvd-c9x/intro-call" target="_blank" rel="noopener">Book a Call</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="brand-mark-row">
+      <div class="brand-logo-wrap" style="background:#1A1816">
+        <img src="assets/logo.svg" alt="Think Consulting logo"
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='inline'" />
+        <span class="brand-logo-fallback" style="display:none">TC</span>
+      </div>
+      <div class="hero-step" style="margin-bottom:0">
+        <div class="step-pill">A Custom Strategy For Think Consulting</div>
+        <span class="hero-eyebrow">Paul Brown · Prepared May 2026</span>
+      </div>
+    </div>
+    <h1 class="disp hero-title">A Custom Look<br/>At Your Video Content Presence</h1>
+    <div class="italic hero-tagline">Think Consulting is a 22-year-old national technology and operations consulting firm with 250+ professionals across six practice areas. The audit is a short note from a documentary shop on what film would add to how the firm shows up.</div>
+  </header>
+
+  <div class="stat-strip">
+    <div class="stat-cell">
+      <div class="stat-num">22</div>
+      <div class="stat-label">Years In Practice</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-num">250+</div>
+      <div class="stat-label">Consultants &amp; Professionals</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-num">6</div>
+      <div class="stat-label">Industries Served</div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <p>"Different by Design – Proven by Results."</p>
+    <div class="callout-attr">Think Consulting · <a href="https://www.thinkconsulting.com/" target="_blank" rel="noopener">thinkconsulting.com</a></div>
+  </div>
+
+  <div class="byline">
+    <div class="byline-avatar">
+      <img src="https://static.wixstatic.com/media/3c6878_f5b394fdd9fb45c98fc7e838f91ea231~mv2.jpg" alt="Tom Langan"
+           onerror="this.style.display='none'; this.parentElement.textContent='TL'" />
+    </div>
+    <div class="byline-body">
+      <div class="byline-name">Prepared by Tom Langan · Founder, Talex Media</div>
+      <div class="byline-sub">Author of <em>Legendeering</em></div>
+    </div>
+  </div>
+
+  <div class="section-block">
+    <p>Paul, I'm Tom Langan. I had a look at what Think Consulting has been putting into the world since you joined the firm a few weeks ago, and wanted to send a short note from a production shop to a national consulting firm.</p>
+    <p>I've spent 25 years in video and television production as a Director of Photography, Producer, and Showrunner, earning two Emmy nominations and leading multi-million dollar productions for global broadcasters like the BBC, NBCUniversal, and Discovery filming all over the world from the Arctic Circle to sub-Saharan Africa.</p>
+    <p><strong>My job was, and still is, to make video that people actually want to watch.</strong></p>
+    <p>In order to do this (create audience first content that leaves people feeling good about supporting your brand and your mission) we need to always take your broader public footprint into account. What follows here is our honest take on what we saw, and where we'd start if we were working together. Think Consulting are experts at solving hard operating problems for clients across six industries. There's a specific reason this is in your inbox: the April announcement of your move to lead HCM pulled the strongest engagement on Think's company page in the last thirty days, which says the audience for the practice you now run is already paying attention. Talex would just add the long-form video.</p>
+  </div>
+
+  <div class="whats-inside">
+    <h2 class="wi-heading">What's Inside</h2>
+    <div class="whats-inside-grid">
+      <a class="wi-card" href="#sec-reel">
+        <div class="wi-num">01</div>
+        <div class="wi-title">The Think Reel</div>
+        <div class="wi-desc">A look at what's already in public</div>
+      </a>
+      <a class="wi-card" href="#sec-equity">
+        <div class="wi-num">02</div>
+        <div class="wi-title">The Equity You've Built</div>
+        <div class="wi-desc">Three strengths any new video would build on</div>
+      </a>
+      <a class="wi-card" href="#sec-strategy">
+        <div class="wi-num">03</div>
+        <div class="wi-title">Lead With Value</div>
+        <div class="wi-desc">The Legendeering framework, in one page</div>
+      </a>
+      <a class="wi-card" href="#sec-worlds">
+        <div class="wi-num">04</div>
+        <div class="wi-title">Three Concepts For Think</div>
+        <div class="wi-desc">Three long-form concepts for the Think Consulting brand</div>
+      </a>
+      <a class="wi-card" href="#sec-films">
+        <div class="wi-num">05</div>
+        <div class="wi-title">Past Talex Films</div>
+        <div class="wi-desc">Three projects across three industries</div>
+      </a>
+      <a class="wi-card" href="#sec-faq">
+        <div class="wi-num">FAQ</div>
+        <div class="wi-title">A Few Questions</div>
+        <div class="wi-desc">What you might be wondering</div>
+      </a>
+    </div>
+  </div>
+
+  <hr class="rule-orange"/>
+
+  <div class="section-intro">
+    <div class="section-intro-row">
+      <span class="sec-pill-orange">✓</span>
+      <span class="section-eyebrow">Where You Show Up</span>
+    </div>
+    <h2 class="section-title">The Channels We Looked At</h2>
+    <p class="section-subtitle">Where Think Consulting shows up in public, with a few things that stood out across each surface.</p>
+  </div>
+
+  <div class="channel-grid">
+
+    <div class="channel-card">
+      <a class="channel-link" href="https://www.thinkconsulting.com/" target="_blank" rel="noopener" aria-label="Visit Think Consulting website"></a>
+      <div class="channel-icon website">
+        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+      </div>
+      <div class="channel-body">
+        <div class="channel-head">
+          <span class="channel-name">Website</span>
+          <span class="channel-handle">thinkconsulting.com</span>
+        </div>
+        <div class="channel-snippet">
+          <ul>
+            <li>Positioning: <em>"Different by Design – Proven by Results."</em> Six service practices: Management Consulting, Business Transformation, PMO Solutions, Post Merger Integration, Human Capital Management, and Marketing Services.</li>
+            <li>The current homepage hero leads with the Executive Advisory team of virtual CXOs as trusted advisors. Industries served are listed under Sectors (Media, Government, Venture, Healthcare, Cyber, Education), but no client logos and no video sit on the homepage.</li>
+          </ul>
+          <a class="source-link" href="https://www.thinkconsulting.com/" target="_blank" rel="noopener">thinkconsulting.com</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="channel-card channel-gap">
+      <a class="channel-link" href="https://www.youtube.com/results?search_query=%22Think+Consulting%22+Timonium" target="_blank" rel="noopener" aria-label="Search YouTube for Think Consulting"></a>
+      <div class="channel-icon youtube">
+        <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+      </div>
+      <div class="channel-body">
+        <div class="channel-head">
+          <span class="channel-name">YouTube</span>
+          <span class="channel-handle">no channel found</span>
+        </div>
+        <div class="channel-snippet">
+          <ul>
+            <li>The website footer carries a YouTube icon, but a public search returns no Think Consulting brand channel. For a 22-year-old firm with thought leadership in writing, this is the most surprising gap in the public footprint.</li>
+            <li>Right now, the firm's actual perspective lives in written articles. A YouTube home would give the same ideas a place to keep working for the brand long after they're posted.</li>
+          </ul>
+          <a class="source-link" href="https://www.youtube.com/results?search_query=%22Think+Consulting%22+Timonium" target="_blank" rel="noopener">youtube search</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="channel-card">
+      <a class="channel-link" href="https://www.linkedin.com/company/think-systems-inc/" target="_blank" rel="noopener" aria-label="Visit Think Consulting on LinkedIn"></a>
+      <div class="channel-icon linkedin">
+        <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.063 2.063 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </div>
+      <div class="channel-body">
+        <div class="channel-head">
+          <span class="channel-name">LinkedIn (Company)</span>
+          <span class="channel-handle">company/think-systems-inc</span>
+        </div>
+        <div class="channel-snippet">
+          <ul>
+            <li>53,181 followers on the company page. The recent thirty days of posts run on text and photos, and your own hire announcement (April) pulled 118 likes and 22 comments, the strongest engagement of the recent feed by a wide margin. Other posts in the same window cover Mother's Day, the Nathan Anthony hire, a SAFe transformation case study, National Volunteer Week, and the NAB Show.</li>
+            <li>The page posts often, but not in video. The bench is the story right now, and the bench is being introduced in writing.</li>
+          </ul>
+          <a class="source-link" href="https://www.linkedin.com/company/think-systems-inc/" target="_blank" rel="noopener">linkedin.com</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="channel-card">
+      <a class="channel-link" href="https://www.thinkconsulting.com/thinking-out-loud/" target="_blank" rel="noopener" aria-label="Visit Thinking Out Loud blog"></a>
+      <div class="channel-icon blog">
+        <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.11 0-2 .89-2 2v14c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2zm0 16H5V5h14v14zM7 10h2v7H7zm4-3h2v10h-2zm4 6h2v4h-2z"/></svg>
+      </div>
+      <div class="channel-body">
+        <div class="channel-head">
+          <span class="channel-name">Thinking Out Loud</span>
+          <span class="channel-handle">thinkconsulting.com/thinking-out-loud</span>
+        </div>
+        <div class="channel-snippet">
+          <ul>
+            <li>This is where the firm's actual voice lives. Recent pieces include <em>"Marketing is Changing Every Day"</em> (January 2026), <em>"Is Your Enrollment Strategy Broken?"</em> (November 2025), <em>"Think Consulting Named One of America's Fastest-Growing Private Companies"</em> (August 2025), and <em>"Navigating Change: Business and Industry Trends from the 2025 NAB Show"</em> (April 2025).</li>
+            <li>Each title is a real subject the firm has a real point of view on, and every one of them could be the starting point for a short film.</li>
+          </ul>
+          <a class="source-link" href="https://www.thinkconsulting.com/thinking-out-loud/" target="_blank" rel="noopener">thinkconsulting.com</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <hr class="rule-orange"/>
+
+  <div class="section-intro" id="sec-reel">
+    <div class="section-intro-row">
+      <span class="sec-pill-orange">01</span>
+      <span class="section-eyebrow">The Think Reel</span>
+    </div>
+    <h2 class="section-title">A Look At What's Already In Public</h2>
+    <p class="section-subtitle">A few specifics from across Think Consulting's public surfaces, with an honest read on each.</p>
+  </div>
+
+  <div class="reel-grid">
+
+    <div class="reel-card">
+      <div class="reel-eyebrow">The Founder Story</div>
+      <div class="reel-title">Tony Gruebl · Twenty-Two Years In Practice</div>
+      <div class="reel-body">Tony Gruebl founded Think in 2004, coming out of a career as a Chief Operating Officer. The firm has grown from that start into a 250-person national consulting practice with offices in Maryland and clients across six industries. The story of how a single COO built a multi-practice consulting firm over twenty-two years has not yet been told on film.</div>
+      <a class="source-link" href="https://www.thinkconsulting.com/about/" target="_blank" rel="noopener">thinkconsulting.com/about</a>
+    </div>
+
+    <div class="reel-card">
+      <div class="reel-eyebrow">The Recognition</div>
+      <div class="reel-title">America's Fastest-Growing Private Companies · 2025</div>
+      <div class="reel-body">Think was named one of America's Fastest-Growing Private Companies in August 2025. The recognition itself ran as a written post on the Thinking Out Loud blog, and the operating story behind that growth, the decisions that produced it, and the people who made them, would carry on film in a way the press release cannot.</div>
+      <a class="source-link" href="https://www.thinkconsulting.com/thinking-out-loud/" target="_blank" rel="noopener">thinkconsulting.com</a>
+    </div>
+
+    <div class="reel-card">
+      <div class="reel-eyebrow">The Bench</div>
+      <div class="reel-title">Twelve Leaders Across Six Practices</div>
+      <div class="reel-body">The Leadership page lists twelve people running the firm: Tony Gruebl as CEO, Joe Poling as President and CRO, Managing Directors over Management Consulting, Government Services, and Human Capital Management, plus growth and operations leaders. Every name on that page has an operating story behind the title. None of them is on camera yet.</div>
+      <a class="source-link" href="https://www.thinkconsulting.com/leadership/" target="_blank" rel="noopener">thinkconsulting.com/leadership</a>
+    </div>
+
+    <div class="reel-card">
+      <div class="reel-eyebrow">The Recent Hire</div>
+      <div class="reel-title">Paul Brown Joins To Lead HCM · April 2026</div>
+      <div class="reel-body">The April announcement of your move to lead Human Capital Management pulled 118 reactions and 22 comments on the company page, the strongest engagement of the recent thirty days by a wide margin. The reaction tells you something the firm already knows: the bench is the story Think's audience wants to follow.</div>
+      <a class="source-link" href="https://www.linkedin.com/company/think-systems-inc/" target="_blank" rel="noopener">linkedin.com</a>
+    </div>
+
+    <div class="reel-card">
+      <div class="reel-eyebrow">The Six Practices</div>
+      <div class="reel-title">From Management Consulting To HCM</div>
+      <div class="reel-body">Six practices sit under the Think roof: Management Consulting, Business Transformation, PMO Solutions, Post Merger Integration, Human Capital Management, and Marketing Services. Each one has its own engagements, its own clients, and its own stories. On the website, each practice is described in service-page copy, and that's where it ends.</div>
+      <a class="source-link" href="https://www.thinkconsulting.com/" target="_blank" rel="noopener">thinkconsulting.com</a>
+    </div>
+
+    <div class="reel-card" style="grid-column:1/-1">
+      <div class="reel-eyebrow">The Six Industries</div>
+      <div class="reel-title">Media · Government · Venture · Healthcare · Cyber · Education</div>
+      <div class="reel-body">Think serves clients across six sectors that show up under Sectors in the navigation: Media, Government, Venture Services, Healthcare, Cyber Security, and Education. These are sectors where decisions get made in rooms most production shops do not get into. Think is in those rooms today, and the work is real, but none of it is yet a film a client could put on their own site.</div>
+      <a class="source-link" href="https://www.thinkconsulting.com/" target="_blank" rel="noopener">thinkconsulting.com</a>
+    </div>
+
+  </div>
+
+  <hr class="rule-orange"/>
+
+  <div class="section-intro" id="sec-equity">
+    <div class="section-intro-row">
+      <span class="sec-pill-orange">02</span>
+      <span class="section-eyebrow">The Equity You've Built</span>
+    </div>
+    <h2 class="section-title">Three Strengths Already In Place</h2>
+    <p class="section-subtitle">All three are earned, all three are working. Any new video would build on what's already here.</p>
+  </div>
+
+  <div class="section-block">
+    <p><strong>Operator equity.</strong> Think Consulting has been in continuous operation since 2004, and today employs over 250 consultants and professionals across six service practices. The firm publishes a 90% project success rate, a 78% client renewal rate, and was named one of America's Fastest-Growing Private Companies in August 2025. Twelve named leaders on the Leadership page run those practices, with Tony Gruebl as the founder and CEO and Joe Poling as President and CRO. The track record is unambiguous, and every one of those numbers is a story the firm has earned the right to tell.</p>
+    <p><strong>Voice equity.</strong> The Thinking Out Loud blog publishes regularly on real subjects: marketing, enrollment strategy, NAB Show trends, the firm's own growth recognition. Each piece carries a clear point of view rather than service-page copy. The LinkedIn company page has 53,181 followers and posts often enough that the audience is already in the habit of hearing from the firm. The voice is established. What's missing is the format.</p>
+    <p><strong>Cultural equity.</strong> The six industries on the Sectors page (Media, Government, Venture, Healthcare, Cyber, Education) are the kinds of clients whose work shapes how their sectors operate. The firm's recent feed shows it investing in its own people too, with internal HR investment posts, hire announcements that pull real engagement, National Volunteer Week activity, and a presence at the NAB Show. The fabric is there to film.</p>
+    <p>The one thing missing from the public presence is long-form video that comes back week after week: leader-led teaching from the bench, client hero films from inside the engagements, documentary treatment of the firm's case work. That is a format gap, not a quality gap, and it is what the Legendeering framework on the next page is built to close.</p>
+  </div>
+
+  <hr class="rule-orange"/>
+
+  <div class="section-intro" id="sec-strategy">
+    <div class="section-intro-row">
+      <span class="sec-pill-orange">03</span>
+      <span class="section-eyebrow">Lead With Value</span>
+    </div>
+    <h2 class="section-title">The Legendeering Framework, In One Page</h2>
+    <p class="section-subtitle">The methodology behind every Talex production. Five directives, one core principle.</p>
+  </div>
+
+  <div class="section-block">
+    <p>Legendeering is Talex's proprietary strategy. The core principle is straightforward: lead with value, always. The brand earns trust by giving without expectation, and that trust grows over time because people keep choosing to watch.</p>
+    <p>Five directives drive it:</p>
+    <ul style="list-style:none;padding:0;margin:0.5rem 0 1rem">
+      <li style="position:relative;padding-left:16px;margin-bottom:7px;font-size:14px;line-height:1.7;color:var(--txt2)"><span style="position:absolute;left:4px;top:-1px;color:var(--o);font-weight:700;font-size:18px;line-height:1">·</span><strong style="color:var(--txt);font-weight:500">Give Without Expectation.</strong> Value delivered without strings. The kind of generosity that builds loyalty money cannot buy.</li>
+      <li style="position:relative;padding-left:16px;margin-bottom:7px;font-size:14px;line-height:1.7;color:var(--txt2)"><span style="position:absolute;left:4px;top:-1px;color:var(--o);font-weight:700;font-size:18px;line-height:1">·</span><strong style="color:var(--txt);font-weight:500">Be Relentlessly Authentic.</strong> Say true things. Show real work. Speak like a human being.</li>
+      <li style="position:relative;padding-left:16px;margin-bottom:7px;font-size:14px;line-height:1.7;color:var(--txt2)"><span style="position:absolute;left:4px;top:-1px;color:var(--o);font-weight:700;font-size:18px;line-height:1">·</span><strong style="color:var(--txt);font-weight:500">It's Not About You. It's About Them.</strong> The audience has to come first. It's all about their wants and needs and making something they will choose to watch.</li>
+      <li style="position:relative;padding-left:16px;margin-bottom:7px;font-size:14px;line-height:1.7;color:var(--txt2)"><span style="position:absolute;left:4px;top:-1px;color:var(--o);font-weight:700;font-size:18px;line-height:1">·</span><strong style="color:var(--txt);font-weight:500">Start With Story, Follow With Facts.</strong> Story gives information shape, context, and emotional weight. Facts alone rarely move people.</li>
+      <li style="position:relative;padding-left:16px;margin-bottom:7px;font-size:14px;line-height:1.7;color:var(--txt2)"><span style="position:absolute;left:4px;top:-1px;color:var(--o);font-weight:700;font-size:18px;line-height:1">·</span><strong style="color:var(--txt);font-weight:500">Consistency Is Key.</strong> Trust is built in moments, repeated over time.</li>
+    </ul>
+    <p>Think Consulting are experts at solving hard operating problems for clients across six industries. Talex would add the long-form video: documentary films built on the work the firm is already doing. The three ideas below are what that looks like for a firm at Think's scale.</p>
+  </div>
+
+  <div class="cred-row">
+    <span class="cred-chip">2x Emmy Nominated</span>
+    <span class="cred-chip">25 Years Production</span>
+    <span class="cred-chip">100+ Hours Distributed Globally</span>
+    <span class="cred-chip">BBC · NBC · Discovery · ABC · Netflix</span>
+  </div>
+
+  <hr class="rule-orange"/>
+
+  <div class="section-intro" id="sec-worlds">
+    <div class="section-intro-row">
+      <span class="sec-pill-orange">04</span>
+      <span class="section-eyebrow">Three Concepts For Think Consulting</span>
+    </div>
+    <h2 class="section-title">Three Long-Form Concepts For The Think Brand</h2>
+    <p class="section-subtitle">Each one builds on equity Think has already earned. Each one is something only Think could make.</p>
+  </div>
+
+  <div class="ideas-grid">
+
+    <div class="idea-card idea-card-featured">
+      <div class="idea-num">01</div>
+      <div class="idea-body">
+        <div class="idea-title">"Inside The Engagement"</div>
+        <div class="idea-desc">A returning documentary series that follows one Think client through one real engagement as it unfolds. The client's CEO or operating leader tells the story in their own words from inside the work, while the Think Managing Director on the engagement appears as the strategic guide who helps the audience understand what the choices actually look like from the inside. Each season picks an industry from Think's six sectors (a Government modernization, a Healthcare integration, an Education enrollment turnaround) and the film is something the client can use indefinitely on their own channels while it doubles as the most credible portfolio piece Think could put in front of the next prospect in that sector.</div>
+      </div>
+    </div>
+
+    <div class="idea-card">
+      <div class="idea-num">02</div>
+      <div class="idea-body">
+        <div class="idea-title">"The Think Bench"</div>
+        <div class="idea-desc">A teaching-format short series where each Managing Director takes one concept they've spent a career on and puts it in plain terms a client could act on. Tony on what twenty-two years of building a consulting firm has actually taught him about operating discipline. Joe on running a national practice. Alissa on what management consulting looks like when the engagement actually lands. You on the hiring and retention work that brought you to Think. It's the same expertise that fills the Thinking Out Loud blog, in a format the audience is more likely to watch all the way through.</div>
+      </div>
+    </div>
+
+    <div class="idea-card">
+      <div class="idea-num">03</div>
+      <div class="idea-body">
+        <div class="idea-title">"The Talent Question"</div>
+        <div class="idea-desc">A returning documentary series anchored in the Human Capital Management practice you now lead. Each film follows one Think client through a specific talent decision (a leadership transition, a restructuring, a scaling moment, an executive search) with the client's CEO or COO on camera telling the story from inside the work. You appear as the Think guide who helps the audience understand what the choices actually look like before they are made. The audience this finds is every operating leader who has had to make the same decision and wondered who they should have called. The films double as the most credible portfolio piece the HCM practice could put in front of the next prospect, and as a film the client owns and can use indefinitely on their own channels.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <hr class="rule-orange"/>
+
+  <div class="section-intro" id="sec-films">
+    <div class="section-intro-row">
+      <span class="sec-pill-dark">05</span>
+      <span class="section-eyebrow">A Few Films Talex Has Made</span>
+    </div>
+    <h2 class="section-title">Three Projects Across Three Industries</h2>
+    <p class="section-subtitle">Same craft, same methodology, three very different jobs.</p>
+  </div>
+
+  <div class="case-card">
+    <div class="cs-label">Case Study 01 · Nonprofit</div>
+    <div class="cs-name">Elizabeth Seton Children's</div>
+    <div class="cs-stat-strip">
+      <div class="cs-stat-cell">
+        <div class="cs-stat-num">96</div>
+        <div class="cs-stat-label">Beds in new young adult center</div>
+      </div>
+      <div class="cs-stat-cell">
+        <div class="cs-stat-num">$156M</div>
+        <div class="cs-stat-label">Project investment</div>
+      </div>
+      <div class="cs-stat-cell">
+        <div class="cs-stat-num">2025</div>
+        <div class="cs-stat-label">Year of groundbreaking</div>
+      </div>
+    </div>
+    <div class="cs-section">
+      <div class="cs-section-label">The Challenge</div>
+      <div class="cs-section-body">In 2020, Elizabeth Seton Children's launched a capital campaign to fund a $156 million young adult care facility for patients aging out of their pediatric program. They needed video content that would inspire donors, communicate urgency, and sustain momentum across a multi-year campaign.</div>
+    </div>
+    <div class="cs-section">
+      <div class="cs-section-label">The Approach</div>
+      <div class="cs-section-body">Talex Media produced multiple pieces of informational, inspirational, and commercial fundraising content across the campaign lifecycle. Each piece was designed to give donors a genuine connection to the mission and the people it serves, not just a request for money.</div>
+    </div>
+    <div class="cs-section">
+      <div class="cs-section-label">The Result</div>
+      <div class="cs-section-body">In August 2025, Elizabeth Seton Children's broke ground on their new 96-bed young adult center in White Plains, NY, the first standalone facility of its kind in the United States, providing care for young adults aged 18 to 35 with complex medical needs. The facility is expected to open in January 2028.</div>
+    </div>
+    <div class="cs-footer-meta">First standalone young adult complex-care facility in the U.S. · 96 beds · $156M · Groundbreaking Aug 2025</div>
+  </div>
+
+  <div class="case-card">
+    <div class="cs-label">Case Study 02 · Enterprise</div>
+    <div class="cs-name">Resorts World New York City</div>
+    <div class="cs-stat-strip">
+      <div class="cs-stat-cell">
+        <div class="cs-stat-num">$5.5B</div>
+        <div class="cs-stat-label">Site development investment</div>
+      </div>
+      <div class="cs-stat-cell">
+        <div class="cs-stat-num">10+</div>
+        <div class="cs-stat-label">Video pieces produced</div>
+      </div>
+      <div class="cs-stat-cell">
+        <div class="cs-stat-num">Dec '25</div>
+        <div class="cs-stat-label">Gaming license awarded</div>
+      </div>
+    </div>
+    <div class="cs-section">
+      <div class="cs-section-label">The Challenge</div>
+      <div class="cs-section-body">In 2025, Resorts World International launched a high-stakes public campaign to secure a New York City commercial gaming license and advance their $5.5B investment to transform their existing casino at Aqueduct Racetrack into a full-scale integrated resort. Their communications needed to be credible, compelling, and precise.</div>
+    </div>
+    <div class="cs-section">
+      <div class="cs-section-label">The Approach</div>
+      <div class="cs-section-body">Talex Media produced more than 10 distinct pieces of video content spanning community impact narratives, stakeholder communications, and public-facing advocacy. Each piece was built on a story-first foundation designed to move people, not just inform them.</div>
+    </div>
+    <div class="cs-section">
+      <div class="cs-section-label">The Result</div>
+      <div class="cs-section-body">On December 15, 2025, the NY State Gaming Commission awarded Resorts World NYC one of only three downstate commercial gaming licenses. Talex Media's content supported one of the most consequential licensing decisions in NYC's recent history.</div>
+    </div>
+    <div class="cs-footer-meta">NYC Gaming License Awarded Dec 15, 2025 · 10+ Videos Produced · $5.5B Investment · Spring 2026 Opening</div>
+  </div>
+
+  <div class="case-card">
+    <div class="cs-label">Case Study 03 · Growth Brand</div>
+    <div class="cs-name">Sobo & Sobo LLP</div>
+    <div class="cs-stat-strip">
+      <div class="cs-stat-cell">
+        <div class="cs-stat-num">2020</div>
+        <div class="cs-stat-label">Partnership begin date</div>
+      </div>
+      <div class="cs-stat-cell">
+        <div class="cs-stat-num">7</div>
+        <div class="cs-stat-label">States with Sobo offices</div>
+      </div>
+      <div class="cs-stat-cell">
+        <div class="cs-stat-num">5+</div>
+        <div class="cs-stat-label">Years of ongoing campaigns</div>
+      </div>
+    </div>
+    <div class="cs-section">
+      <div class="cs-section-label">The Challenge</div>
+      <div class="cs-section-body">In 2020, Sobo & Sobo, a New York-based personal injury law firm, engaged Talex Media. They needed commercial video campaigns that could anchor their brand, differentiate them in a competitive legal market, and fuel their growth ambitions across new markets.</div>
+    </div>
+    <div class="cs-section">
+      <div class="cs-section-label">The Approach</div>
+      <div class="cs-section-body">Since 2020, Talex Media has produced all of Sobo & Sobo's commercial video campaigns, an ongoing, multi-year embedded partnership bringing brand consistency, strategic communication, and production quality to every new market they enter.</div>
+    </div>
+    <div class="cs-section">
+      <div class="cs-section-label">The Result</div>
+      <div class="cs-section-body">Since the partnership began, Sobo & Sobo has grown from a NY-focused firm into a multi-state legal practice with offices in NY, CT, NJ, IL, OH, PA, and WI. Talex Media's campaigns have accompanied every stage of that expansion.</div>
+    </div>
+    <div class="cs-footer-meta">5+ Year Partnership · All Commercial Campaigns · 7 States: NY, CT, NJ, IL, OH, PA, WI</div>
+  </div>
+
+  <div class="cred-row">
+    <span class="cred-chip">2x Emmy Nominated</span>
+    <span class="cred-chip">25 Years Experience</span>
+    <span class="cred-chip">100+ Hours Distributed Globally</span>
+    <span class="cred-chip">BBC · Discovery · NBC Universal</span>
+  </div>
+
+  <hr class="rule-orange"/>
+
+  <div class="cta-block">
+    <div class="cta-eyebrow">An Intro Call With Our Team</div>
+    <h2 class="disp cta-headline">Let's Connect</h2>
+    <p class="cta-sub">A short call to walk through what's in this audit, answer whatever you want to ask, and find out whether there's a fit. Nothing is sold on the call.</p>
+    <a class="cta-primary" href="https://calendly.com/d/ct7b-xvd-c9x/intro-call" target="_blank" rel="noopener">Book A Call With Our Team →</a>
+    <div class="cta-reply">Or just reply on LinkedIn and tell me what you actually thought, and feel free to share this with anyone else on your team at Think. Happy to send you a copy of <em>Legendeering</em> if you'd like to read the longer version of the philosophy in section 03.</div>
+  </div>
+
+  <hr class="rule-orange"/>
+
+  <div class="section-intro" id="sec-faq">
+    <div class="section-intro-row">
+      <span class="sec-pill-dark">FAQ</span>
+      <span class="section-eyebrow">A Few Questions You Might Have</span>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">What does a call with you look like?</div>
+    <div class="faq-a">Fifteen minutes. We walk through this document, I answer whatever you want to ask, and we find out if there's a fit. Nothing is sold on the call.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">How custom is this audit?</div>
+    <div class="faq-a">Everything in this document is based on your actual public presence. I don't send the same deck to different companies, this one was prepared specifically for Think Consulting.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">What happens after the call?</div>
+    <div class="faq-a">If there's a fit, we send a formal proposal tailored to your team, your community, and the goals you described. If not, you leave with a clearer picture of your content opportunity and I wish you well.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">How is your approach different from a typical video agency?</div>
+    <div class="faq-a">We start with the community, not the camera. Before any production decision, we map who you're speaking to, what they need from you, and what shift we're trying to produce in them. Format and craft follow from there.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">We already have a marketing team. Why should we work with Talex?</div>
+    <div class="faq-a">Perfect, that's actually how we prefer to work. Talex Media isn't a marketing agency. We're a video production company in the documentary and broadcast tradition. A strong marketing team brings audience clarity, channel strategy, and distribution. We bring the films that give them something worth distributing: customer hero pieces, episodic series, founder content built to a broadcast standard.</div>
+  </div>
+
+  <footer class="site-footer">
+    <span class="footer-brand">Talex Media</span>
+    <div class="footer-links">
+      <a href="https://www.talexmedia.com" target="_blank">talexmedia.com</a>
+      <a href="mailto:solutions@talexmedia.com">solutions@talexmedia.com</a>
+      <a href="https://calendly.com/d/ct7b-xvd-c9x/intro-call" target="_blank">Book a Call</a>
+    </div>
+    <div class="footer-copy">© 2026 Talex Media LLC · A Custom Strategy prepared for Think Consulting · May 2026</div>
+  </footer>
+
+</div>
+
+<script>
+function poke(){
+  try { window.parent.postMessage({ type:"wix-iframe-height", height: document.documentElement.scrollHeight }, "*"); } catch(e){}
+}
+window.addEventListener("load", function(){
+  if (window.ResizeObserver) new ResizeObserver(poke).observe(document.body);
+  poke();
+});
+</script>
+
+</body>
+</html>
